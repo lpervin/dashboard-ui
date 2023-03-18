@@ -1,0 +1,15 @@
+
+.spinner {
+    /* background-color: #f2f2f2; */
+    min-height: 35px;
+    align-self: center;
+    position: relative;
+    top:135px;
+   
+  }
+
+  ui-dashboard-pagination {
+    position: relative;
+    top: -25px;    
+  }
+
