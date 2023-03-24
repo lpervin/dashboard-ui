@@ -6,7 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterModule, Routes } from '@angular/router';
 import { usersListReducer } from './state/user-list.reducer';
 import { UsersApiEffects } from './state/users-api-effects';
-import { MaterialModule } from 'src/app/material.module';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 import { UserEditPageComponent } from './components/user-edit/user-edit-page/user-edit-page.component';
 import { UserEditFormComponent } from './components/user-edit/user-edit-form/user-edit-form.component';
@@ -25,8 +24,7 @@ const usersRoutes: Routes = [
   imports: [
     RouterModule.forChild(usersRoutes),
     StoreModule.forFeature('users', usersListReducer),
-    EffectsModule.forFeature([UsersApiEffects]),
-    MaterialModule,
+    EffectsModule.forFeature([UsersApiEffects]),    
     CommonModule
   ]
 })
