@@ -26,13 +26,19 @@
 
     <!-- Dropdown Nav -->
     <nav x-show="isOpen" class="flex flex-col pt-4">
-        <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+        <a 
+        routerLink="/dashboard"
+        routerLinkActive="active-nav-link"
+        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-tachometer-alt mr-3"></i>
             Dashboard
         </a>
-        <a href="blank.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
-            <i class="fas fa-sticky-note mr-3"></i>
-            Blank Page
+        <a 
+        routerLink="/users"
+        routerLinkActive="active-nav-link"
+         class="flex items-center text-white py-2 pl-4 nav-item">
+         <i class="fas fa-users mr-3"></i>
+           User Management
         </a>
         <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-table mr-3"></i>

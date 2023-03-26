@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -11,21 +12,22 @@ import { UserEditPageComponent } from './components/user-edit/user-edit-page/use
 import { UserEditFormComponent } from './components/user-edit/user-edit-form/user-edit-form.component';
 const usersRoutes: Routes = [
   {   path: 'users',  component: UsersListComponent },
-  //{   path: 'users/:id', component: UserEditComponent }
+  {   path: 'users/:id', component: UserEditPageComponent }
 ];
 
-@NgModule({
+@NgModule({  
+  imports: [
+    RouterModule.forChild(usersRoutes),
+    StoreModule.forFeature('users', usersListReducer),
+    EffectsModule.forFeature([UsersApiEffects]),    
+    FormsModule, ReactiveFormsModule,
+    CommonModule
+  ],
   declarations: [
     UsersListComponent,
     PaginationComponent,
     UserEditPageComponent,
     UserEditFormComponent
-  ],
-  imports: [
-    RouterModule.forChild(usersRoutes),
-    StoreModule.forFeature('users', usersListReducer),
-    EffectsModule.forFeature([UsersApiEffects]),    
-    CommonModule
   ]
 })
 export class UsersManagementModule { }

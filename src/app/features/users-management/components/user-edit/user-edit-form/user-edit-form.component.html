@@ -1,1 +1,38 @@
-<p>user-edit-form works!</p>
+<div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
+    <p class="text-xl pb-6 flex items-center">
+        <i class="fas fa-user-tie mr-3"></i> Update User Profile
+    </p>
+    <div class="leading-loose">
+        <form class="p-10 bg-white rounded shadow-xl"
+        [formGroup]="userForm" #f="ngForm" (submit)="onSubmit(f.value)"
+        >
+            <div class="">
+                <label class="block text-sm text-gray-600" for="name">Name</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" 
+                formControlName="name" placeholder="User Name"
+                id="name" name="name" type="text" required=""  aria-label="Name">
+            </div>
+            <div class="mt-2">
+                <label class="block text-sm text-gray-600" for="email">Email</label>
+                <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" 
+                formControlName="email"
+                id="email" name="email" type="text" required="" placeholder="User Email" aria-label="Email">
+            </div>
+            <div class="mt-2">
+                <label class=" block text-sm text-gray-600" for="message">Age</label>
+                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" 
+                formControlName="age" placeholder="User Age"
+                id="age" name="age" type="number" required=""  aria-label="age">
+                <!-- <textarea class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded" id="message" name="message" rows="6" required="" placeholder="Your inquiry.." aria-label="Email"></textarea> -->
+            </div>
+            <div class="mt-6">
+                <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded" 
+                type="submit">Save</button>
+                &nbsp;
+                <button class="px-4 py-1 text-white font-light tracking-wider bg-red-500 rounded" 
+                (click)="cancel.emit()"
+                type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

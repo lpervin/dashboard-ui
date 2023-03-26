@@ -34,7 +34,7 @@ export const initialState: UserListState = adapter.getInitialState(
                     AvailabelPages: [],
                     NextPageRangeAvailable: false,
                     PreviousPageRangeAvailable: false,
-                    PagesRangeSize: 10      
+                    PagesRangeSize: 5      
                 }
          
     
