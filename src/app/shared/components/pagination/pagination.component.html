@@ -1,4 +1,5 @@
-<div *ngIf="pagerModel!.numberOfpages ?? 0>0" class="flex justify-between flex-end my-2">
+
+<div *ngIf="pagerModel!.numberOfpages ?? 0>0" class="flex justify-between flex-end my-2" >
 
   <div  class="mt-2 hidden sm:block mb-1 text-15xs text-blue-700 font-medium">
     Selected Page: {{pagerModel!.currentPageNumber}} of {{pagerModel!.numberOfpages}}
@@ -85,5 +86,5 @@
 </div>
 
 
-
+<div id="page-scroll"></div>
   

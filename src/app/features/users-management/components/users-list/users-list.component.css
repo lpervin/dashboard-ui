@@ -1,4 +1,8 @@
 
+html, body {
+  overflow-x: hidden;
+}
+
 .spinner {
     /* background-color: #f2f2f2; */
     min-height: 35px;
@@ -12,4 +16,35 @@
     position: relative;
     top: -25px;    
   }
+  
+  @media only screen and (max-width: 640px){
+    ui-dashboard-pagination {    
+      position: relative; 
+      top: 0;  
+    }
+  }
 
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    /* thead tr:not(:first-child) {
+      display: none;
+    } */
+   
+  }
+
+  @media (max-width: 640px){
+    thead tr:first-child {    
+      display: none;
+    }
+  }
+ 
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }

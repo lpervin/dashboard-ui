@@ -78,6 +78,28 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": false,            
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -89,7 +111,10 @@
           "configurations": {
             "production": {
               "browserTarget": "dashboard-ui:build:production"
-            }
+            },
+            "dev": {             
+                "browserTarget": "dashboard-ui:build:dev"
+              }
           }
         },
         "extract-i18n": {
