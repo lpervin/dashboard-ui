@@ -1,5 +1,5 @@
 import {  emptyProps, createActionGroup, props, createAction } from "@ngrx/store";
-import { UserRequiredProps } from "../../models/UsersModel";
+import { UserModel, UserRequiredProps } from "../../models/UsersModel";
 
 
 export const UserListPagingActions = createActionGroup({
@@ -18,4 +18,8 @@ export const SelectUserForEdit = createAction('[User-edit page] SelectUser', pro
 export const updateUser = createAction(
     "[User-edit page] Update User",
     props<{ userId: string; changes: UserRequiredProps }>()
+  );
+  export const createUser = createAction(
+    "[User-edit page] Create User",
+    props<{ newUser: UserModel }>()
   );

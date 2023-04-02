@@ -7,6 +7,7 @@ export const UsersApiActions = createActionGroup({
         'dataInit': props<{response: UsersApiResponseModel}>(),
         'pagedDataLoaded': props<{response: UsersApiResponseModel}>(),
         'apiFailure': props<{error: any}>(),
-        'userUpdated': props<{user: UserModel}>()
+        'userUpdated': props<{user: UserModel}>(),
+        'userCreated': props<{newUser: UserModel}>()
     }
 });

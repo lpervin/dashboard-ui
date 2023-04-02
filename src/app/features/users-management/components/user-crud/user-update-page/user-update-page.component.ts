@@ -8,10 +8,10 @@ import { SelectUserForEdit, updateUser } from '../../../state/actions/users-list
 
 @Component({
   selector: 'ui-dashboard-user-edit-page',
-  templateUrl: './user-edit-page.component.html',
-  styleUrls: ['./user-edit-page.component.css']
+  templateUrl: './user-update-page.component.html',
+  styleUrls: ['./user-update-page.component.css']
 })
-export class UserEditPageComponent implements OnInit {
+export class UserUpdatePageComponent implements OnInit {
 
         loadingStatu$!: Observable<string>;
         currentSelectedUserData$!: Observable<UserModel | null | undefined>;

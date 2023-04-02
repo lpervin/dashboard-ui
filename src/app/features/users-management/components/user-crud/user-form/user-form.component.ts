@@ -3,11 +3,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserModel } from '../../../models/UsersModel';
 
 @Component({
-  selector: 'ui-dashboard-user-edit-form',
-  templateUrl: './user-edit-form.component.html',
-  styleUrls: ['./user-edit-form.component.css']
+  selector: 'ui-dashboard-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.css']
 })
-export class UserEditFormComponent implements OnInit {
+export class UserFormComponent implements OnInit {
   @Output() save = new EventEmitter();
   @Output() cancel = new EventEmitter();
   
@@ -26,7 +26,7 @@ export class UserEditFormComponent implements OnInit {
           age: userToUpdate.age,
           email: userToUpdate.email
         });
-        this.userId = userToUpdate.id;
+        this.userId = userToUpdate?.id;
       }
   }
   constructor() { }

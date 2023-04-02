@@ -11,9 +11,8 @@
    </div>
 
 
-<ui-dashboard-user-edit-form
-class="col-50"
+<ui-dashboard-user-form
 [userupdate]="currentSelectedUserData$ | async"
 (save)="onSave($event)"
 (cancel)="onCancel()">
-</ui-dashboard-user-edit-form>
+</ui-dashboard-user-form>

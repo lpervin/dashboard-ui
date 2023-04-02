@@ -169,6 +169,12 @@ export const usersListReducer = createReducer<UserListState>(initialState,
                         }
             ); 
     }), 
+    on(UsersApiActions.usercreated, (state, action)=> {
+        return adapter.addOne(action.newUser, {...state, 
+            selectedUserId: null,
+            Paging: {...state.Paging, currentPage: 1}
+        });
+    }),
     on(SelectUserForEdit, (state, {userId}): UserListState => {
         return {...state, selectedUserId: userId}
     }),

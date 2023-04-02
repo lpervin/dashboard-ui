@@ -8,11 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { usersListReducer } from './state/user-list.reducer';
 import { UsersApiEffects } from './state/users-api-effects';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
-import { UserEditPageComponent } from './components/user-edit/user-edit-page/user-edit-page.component';
-import { UserEditFormComponent } from './components/user-edit/user-edit-form/user-edit-form.component';
+import { UserUpdatePageComponent } from './components/user-crud/user-update-page/user-update-page.component';
+import { UserFormComponent } from './components/user-crud/user-form/user-form.component';
+import { UserCreatePageComponent } from './components/user-crud/user-create-page/user-create-page.component';
 const usersRoutes: Routes = [
   {   path: 'users',  component: UsersListComponent },
-  {   path: 'users/:id', component: UserEditPageComponent }
+  {   path: 'users/create',  component: UserCreatePageComponent, pathMatch: 'full'},
+  {   path: 'users/:id', component: UserUpdatePageComponent },
+  
 ];
 
 @NgModule({  
@@ -26,8 +29,9 @@ const usersRoutes: Routes = [
   declarations: [
     UsersListComponent,
     PaginationComponent,
-    UserEditPageComponent,
-    UserEditFormComponent
+    UserUpdatePageComponent,
+    UserFormComponent,
+    UserCreatePageComponent
   ]
 })
 export class UsersManagementModule { }

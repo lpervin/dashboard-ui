@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UserModel, UserRequiredProps, UsersApiResponseModel } from '../models/UsersModel';
 import { ApiPageRequest } from 'src/app/shared//models/APIs';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 const BASE_URL =  environment.api_baseurl;
 const HEADER = {
@@ -28,6 +29,14 @@ export class UsersDataService {
         return this.http.put<UserModel>(
           `${BASE_URL}/${id}`,
             JSON.stringify(userUpdate),
+            HEADER
+        );
+     }
+
+     create(newUser: UserModel){        
+        return this.http.post<UserModel>(
+          `${BASE_URL}`,
+            JSON.stringify(newUser),
             HEADER
         );
      }
