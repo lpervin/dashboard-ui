@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from '../../../models/UsersModel';
 
 @Component({
@@ -12,9 +12,9 @@ export class UserFormComponent implements OnInit {
   @Output() cancel = new EventEmitter();
   
   userForm = new FormGroup({
-    name: new FormControl(""),
-    age: new FormControl(0),
-    email: new FormControl("")
+    name: new FormControl("", Validators.required),
+    age: new FormControl(0, Validators.min(18)),
+    email: new FormControl("", [Validators.required, Validators.email])
   });
 
   userId!: string | null;
@@ -28,6 +28,18 @@ export class UserFormComponent implements OnInit {
         });
         this.userId = userToUpdate?.id;
       }
+  }
+
+  get name() {
+    return this.userForm.get("name");
+  }
+
+  get age() {
+    return this.userForm.get("age");
+  }
+
+  get email() {
+    return this.userForm.get("email");
   }
   constructor() { }
 

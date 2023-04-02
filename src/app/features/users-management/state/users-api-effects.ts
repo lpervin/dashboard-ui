@@ -65,9 +65,16 @@ export class UsersApiEffects {
             createUser$ = createEffect(() => 
                                 this.actions$.pipe(
                                     ofType(createUser),
-                                    concatMap(action =>
+                                    withLatestFrom(this.store.select(selectPaging)),
+                                    exhaustMap(([action, pagingVM]) =>
                                         this.userDataService.create(action.newUser)
-                                       .pipe(map(newUser => UsersApiActions.usercreated({newUser}))))
+                                       .pipe(
+                                        map(pageResponeWtUser => UsersApiActions.usercreated({pageResponeWtUser}),
+                                        catchError(error => of(UsersApiActions.apifailure({error}))
+                                            )
+                                        
+                                        ))
+                                        )
                                         )
                                     );
 }

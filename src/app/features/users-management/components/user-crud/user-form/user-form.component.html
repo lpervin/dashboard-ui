@@ -10,26 +10,48 @@
         [formGroup]="userForm" #f="ngForm" (submit)="onSubmit(f.value)"
         >
             <div class="mt-2">
-                <label class="block text-sm text-gray-600" for="name">Name</label>
+                <label class="block text-sm text-gray-600" for="name">Name
+                    <span *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <strong class="text-red-600 mx-2" *ngIf="name.errors.required">Name is required.</strong>
+                    </span>
+
+                </label>
                 <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" 
                 formControlName="name" placeholder="User Name"
                 id="name" name="name" type="text" required=""  aria-label="Name">
+               
             </div>
             <div class="mt-2">
-                <label class="block text-sm text-gray-600" for="email">Email</label>
+                <label class="block text-sm text-gray-600" for="email">Email
+
+                    <span *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <strong  class="text-red-600 mx-2" *ngIf="email.errors.required">Email is required.</strong>
+                        <strong  class="text-red-600 mx-2" *ngIf="email.errors.email">Email must be a valid email address.</strong>
+                    </span>
+
+                </label>
                 <input class="w-full px-5   text-gray-700 bg-gray-200 rounded" 
                 formControlName="email"
                 id="email" name="email" type="text" required="" placeholder="User Email" aria-label="Email">
             </div>
             <div class="mt-2">
-                <label class=" block text-sm text-gray-600" for="message">Age</label>
+                <label class=" block text-sm text-gray-600" for="message">Age
+                    <span *ngIf="age.invalid && (age.dirty || age.touched)">
+                        <strong class="text-red-600 mx-2" *ngIf="age.errors.required">Age is required.</strong>
+                        <strong class="text-red-600 mx-2" *ngIf="age.errors.min">Age must be at least 18 years old.</strong>
+                    </span>
+
+                </label>
                 <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" 
                 formControlName="age" placeholder="User Age"
                 id="age" name="age" type="number" required=""  aria-label="age">
                 <!-- <textarea class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded" id="message" name="message" rows="6" required="" placeholder="Your inquiry.." aria-label="Email"></textarea> -->
             </div>
             <div class="mt-6">
-                <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded" 
+              
+                <button class="px-4 py-1 text-white font-light tracking-wider  rounded " 
+                [disabled]="userForm.invalid"
+                [ngClass]="userForm.invalid ? 'bg-blue-200' : 'bg-blue-600'"
                 type="submit">Save</button>
                 &nbsp;
                 <button class="px-4 py-1 text-white font-light tracking-wider bg-red-500 rounded" 

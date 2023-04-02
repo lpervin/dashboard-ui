@@ -43,7 +43,7 @@ export const initialState: UserListState = adapter.getInitialState(
 
 export const usersListReducer = createReducer<UserListState>(initialState,
     on(UserListPagingActions.init, (state) : UserListState => {    
-            console.log(state) ;
+            //console.log(state) ;
             return {             
                 ...state,
                  DataStatus: 'loading'}
@@ -169,11 +169,15 @@ export const usersListReducer = createReducer<UserListState>(initialState,
                         }
             ); 
     }), 
-    on(UsersApiActions.usercreated, (state, action)=> {
-        return adapter.addOne(action.newUser, {...state, 
-            selectedUserId: null,
-            Paging: {...state.Paging, currentPage: 1}
-        });
+    on(UsersApiActions.usercreated, (state, {pageResponeWtUser})=> {
+        return adapter.setAll(pageResponeWtUser.pageData, 
+            {...state,
+            Paging: {...state.Paging, currentPage: 1},
+            DataStatus: 'success',   });
+        // return adapter.addOne(action.newUser, {...state, 
+        //     selectedUserId: null,
+        //     Paging: {...state.Paging, currentPage: 1}
+        // });
     }),
     on(SelectUserForEdit, (state, {userId}): UserListState => {
         return {...state, selectedUserId: userId}
