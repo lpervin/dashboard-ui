@@ -11,7 +11,7 @@
         >
             <div class="mt-2">
                 <label class="block text-sm text-gray-600" for="name">Name
-                    <span *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <span *ngIf="name && (name.invalid && (name.dirty || name.touched))">
                         <strong class="text-red-600 mx-2" *ngIf="name.errors.required">Name is required.</strong>
                     </span>
 
@@ -24,7 +24,7 @@
             <div class="mt-2">
                 <label class="block text-sm text-gray-600" for="email">Email
 
-                    <span *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <span *ngIf="email && (email.invalid && (email.dirty || email.touched))">
                         <strong  class="text-red-600 mx-2" *ngIf="email.errors.required">Email is required.</strong>
                         <strong  class="text-red-600 mx-2" *ngIf="email.errors.email">Email must be a valid email address.</strong>
                     </span>
@@ -36,7 +36,7 @@
             </div>
             <div class="mt-2">
                 <label class=" block text-sm text-gray-600" for="message">Age
-                    <span *ngIf="age.invalid && (age.dirty || age.touched)">
+                    <span *ngIf="age && (age.invalid && (age.dirty || age.touched))">
                         <strong class="text-red-600 mx-2" *ngIf="age.errors.required">Age is required.</strong>
                         <strong class="text-red-600 mx-2" *ngIf="age.errors.min">Age must be at least 18 years old.</strong>
                     </span>
