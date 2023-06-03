@@ -42,4 +42,11 @@ export class UsersDataService {
           mergeMap((response: UserModel) => this.list())
         );
      }
+
+     delete(id: string){
+      return this.http.delete<UserModel>(
+        `${BASE_URL}/${id}`,
+        HEADER
+      );
+     }
 }

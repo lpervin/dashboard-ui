@@ -13,8 +13,8 @@ export const UserListPagingActions = createActionGroup({
             'PrevPageRange':emptyProps()
          }
 });
-
 export const SelectUserForEdit = createAction('[User-edit page] SelectUser', props<{userId:string}>());
+export const deleteUser = createAction('[UserList page] Delete User',props<{userToDelete:UserModel}>());
 export const updateUser = createAction(
     "[User-edit page] Update User",
     props<{ userId: string; changes: UserRequiredProps }>()

@@ -169,6 +169,9 @@ export const usersListReducer = createReducer<UserListState>(initialState,
                         }
             ); 
     }), 
+    on (UsersApiActions.userdeleted, (state, action) => {
+        return adapter.removeOne(action.user.id, state);
+    }),
     on(UsersApiActions.usercreated, (state, {pageResponeWtUser})=> {
         return adapter.setAll(pageResponeWtUser.pageData, 
             {...state,

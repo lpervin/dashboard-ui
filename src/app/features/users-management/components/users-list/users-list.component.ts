@@ -5,7 +5,7 @@ import { UserModel } from '../../models/UsersModel';
 import { selectErrorMessage, selectLoadingStatus, selectPaging, selectUserListState, selectUsersPageData, State } from '../../state';
 import { UserListState } from '../../state/user-list.reducer';
 import { Store } from '@ngrx/store';
-import { UserListPagingActions } from '../../state/actions/users-list-page.actions';
+import { UserListPagingActions, deleteUser } from '../../state/actions/users-list-page.actions';
 
 @Component({
   selector: 'ngrx-users-list',
@@ -59,8 +59,13 @@ PrevPageRange()
   this.store.dispatch(UserListPagingActions.prevpagerange());
 }
 
-EditUser(id: any) {
- //console.log(id)
-  }
+deleteUser(user: UserModel) {
+    if (confirm('Are you sure you want to delete this user?')) {
+        //alert('Will you delete this user ' + user.id );
+        this.store.dispatch(
+            deleteUser({ userToDelete: user })
+        );
+    }
+}
 
 }

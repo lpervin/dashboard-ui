@@ -5,7 +5,7 @@ import { catchError, exhaustMap,  map, of, switchMap, withLatestFrom, tap, conca
 import { selectPaging, State } from ".";
 import { UsersDataService } from "../services/users-data.service";
 import { UsersApiActions } from "./actions/users-api.actions";
-import { UserListPagingActions, createUser, updateUser } from "./actions/users-list-page.actions";
+import { UserListPagingActions, createUser, updateUser, deleteUser } from "./actions/users-list-page.actions";
 
 @Injectable()
 export class UsersApiEffects {
@@ -77,5 +77,16 @@ export class UsersApiEffects {
                                         )
                                         )
                                     );
+                deleteUser$ = createEffect(() =>
+                                        this.actions$.pipe(
+                                            ofType(deleteUser),
+                                            concatMap((action) => this.userDataService.delete(action.userToDelete.id))
+                                            ).pipe(
+                                                map(action => UsersApiActions.userdeleted({ user: action})),
+                                                catchError(error => of(UsersApiActions.apifailure({error})))
+                                            
+                                                )
+                                        );
+                                    
 }
 
