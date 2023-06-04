@@ -9,49 +9,49 @@
       {
         "id": 2,
         "title": "Blank Page",
-        "url": "/users",
+        "url": "/products",
         "icon": "fa-sticky-note"
       },
       {
         "id": 3,
         "title": "Tables",
-        "url": "/users",
+        "url": "/products1",
         "icon": "fa-table"
       },
       {
         "id": 4,
         "title": "Forms",
-        "url": "/users",
+        "url": "/forms",
         "icon": "fa-align-left"
       },
       {
         "id": 5,
         "title": "Tabbed Content",
-        "url": "/users",
+        "url": "/forms2",
         "icon": "fa-tablet-alt"
       },
       {
         "id": 7,
         "title": "Calendar",
-        "url": "/users",
+        "url": "/calendar",
         "icon": "fa-calendar"
       },
       {
         "id": 8,
         "title": "Support",
-        "url": "/users",
+        "url": "/support",
         "icon": "fa-cogs"
       },
       {
         "id": 8,
         "title": "My Account",
-        "url": "/users",
+        "url": "/myaccount",
         "icon": "fa-user"
       },
       {
         "id": 8,
         "title": "Sign Out",
-        "url": "/users",
+        "url": "/signout",
         "icon": "fa-sign-out-alt"
       }
     ]

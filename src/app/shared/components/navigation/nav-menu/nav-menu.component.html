@@ -1,8 +1,11 @@
 <ng-container *ngIf="(navMenu$ | async) as navMenus">
   <!-- Here: <b> {{navMenus | json}}</b> -->
   <div *ngFor="let menu of navMenus.menus">
-    <a [routerLink]="menu.url" class="flex  
-                        opacity-75 hover:opacity-100 pt-4  pl-1 text-black-900
+    <a [routerLink]="menu.url" routerLinkActive="activeLink" class="flex  
+                        opacity-75 
+                        hover:opacity-100
+                        hover:text-gray-950
+                         pt-4  pl-1 text-gray-700
                         nav-item items-center  ">
                             <i 
                             class="fas mr-2" [class]="menu.icon"></i>
