@@ -1,4 +1,20 @@
-<h1 class="text-3xl text-black pb-6">Users Management</h1>
+<div class="flex  justify-between">
+  <div class="translate-y-3"><h1 class="text-3xl text-black pb-6">Users Management</h1></div>
+<div>
+  <button 
+  [routerLink]="['/users/create']" 
+  class="w-full bg-blue-600  font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg px-7   
+  hover:shadow-xl                     
+  text-white
+  text-lg                    
+  hover:bg-blue-700 flex items-center justify-center">
+      <i class="fas fa-plus mr-3"></i> New User
+  </button>
+</div>
+  
+</div>
+
+
 <div class="overflow-auto" style="min-height: 410px;"> 
     
      <div  *ngIf="(loadingStatu$ | async)=='loading'; " class=' h-101' style="min-height: 295px; margin-bottom: -30px;"> 
@@ -26,6 +42,7 @@
       <p class="text-xl pb-3 flex items-center">
         <i class="fas fa-list mr-3"></i> Users
     </p>
+    
     <div class="bg-white overflow-auto">
         <table class="w-full flex flex-row flex-no-wrap bg-white">
             <thead class="bg-gray-800 text-white">

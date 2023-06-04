@@ -34,6 +34,16 @@ html, body {
     } */
    
   }
+  table {
+    border: 0.1em solid #e7e5e4;
+    
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    /*  */
+    
+    
+  }
 
   @media (max-width: 640px){
     thead tr:first-child {    
