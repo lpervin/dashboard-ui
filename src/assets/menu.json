@@ -1,0 +1,59 @@
+{
+    "menus": [
+      {
+        "id": 1,
+        "title": "Dashboard",
+        "url": "/users",
+        "icon": "fa-tachometer-alt"
+      },
+      {
+        "id": 2,
+        "title": "Blank Page",
+        "url": "/users",
+        "icon": "fa-sticky-note"
+      },
+      {
+        "id": 3,
+        "title": "Tables",
+        "url": "/users",
+        "icon": "fa-table"
+      },
+      {
+        "id": 4,
+        "title": "Forms",
+        "url": "/users",
+        "icon": "fa-align-left"
+      },
+      {
+        "id": 5,
+        "title": "Tabbed Content",
+        "url": "/users",
+        "icon": "fa-tablet-alt"
+      },
+      {
+        "id": 7,
+        "title": "Calendar",
+        "url": "/users",
+        "icon": "fa-calendar"
+      },
+      {
+        "id": 8,
+        "title": "Support",
+        "url": "/users",
+        "icon": "fa-cogs"
+      },
+      {
+        "id": 8,
+        "title": "My Account",
+        "url": "/users",
+        "icon": "fa-user"
+      },
+      {
+        "id": 8,
+        "title": "Sign Out",
+        "url": "/users",
+        "icon": "fa-sign-out-alt"
+      }
+    ]
+  }
+  

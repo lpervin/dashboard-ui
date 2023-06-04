@@ -1,0 +1,8 @@
+<ng-container *ngIf="(navMenu$ | async) as navMenus">
+       <div *ngFor="let menu of navMenus.menus">
+         <a  [routerLink]="menu.url" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                <i class="fas mr-3" [class]="menu.icon"></i>
+                {{menu.title}}
+            </a>
+     </div>      
+  </ng-container>

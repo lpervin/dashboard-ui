@@ -10,14 +10,14 @@ import { AppComponent } from "./app.component";
 import { UsersManagementModule } from "./features/users-management/users-management.module";
 import { AppRoutingModule } from "./app-routing.module";
 
-import { SidebarNavigationComponent} from './shared/components/navigation/sidebar-navigation/sidebar-navigation.component'
 
 import { NavMenuComponent } from './shared/components/navigation/nav-menu/nav-menu.component';
 import { HeaderComponent } from './shared/components/dashboard/header/header.component';
 import { FooterComponent } from './shared/components/dashboard/footer/footer.component';
+import { NavMenuMobileComponent } from './shared/components/navigation/nav-menu-mobile/nav-menu-mobile.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarNavigationComponent, NavMenuComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, NavMenuComponent, HeaderComponent, FooterComponent, NavMenuMobileComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

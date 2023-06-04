@@ -8,17 +8,17 @@
                 x-show="!show"
                 x-on:click="collapsed = false; show = true">
                 <i class="fa-solid fa-bars fa-xl
-                text-2xl text-white"></i>
+                text-2xl text-white cursor-pointer"></i>
             </a>
             <a 
                 x-show="show && collapsed"
                 x-on:click="collapsed = false; show = true">
-                <i class="fa-solid fa-arrow-right fa-xl text-2xl text-white"></i>
+                <i class="fa-solid fa-arrow-right fa-xl text-2xl text-white cursor-pointer"></i>
             </a>
             <a  
                 x-on:click="collapsed = true; show = true"
                 x-show="!collapsed && show">
-                <i class="fa-solid fa-angles-left fa-xl text-2xl text-white"></i>    
+                <i class="fa-solid fa-angles-left fa-xl text-2xl text-white cursor-pointer"></i>    
             </a>  
         
     </header>
@@ -34,42 +34,7 @@
 
     <!-- Dropdown Nav Mobile-->
     <nav x-bind:class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-        <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
-            <i class="fas fa-tachometer-alt mr-3"></i>
-            Dashboard
-        </a>
-        <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-sticky-note mr-3"></i>
-            Blank Page
-        </a>
-        <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-table mr-3"></i>
-            Tables
-        </a>
-        <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-align-left mr-3"></i>
-            Forms
-        </a>
-        <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-tablet-alt mr-3"></i>
-            Tabbed Content
-        </a>
-        <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-calendar mr-3"></i>
-            Calendar
-        </a>
-        <a  class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-cogs mr-3"></i>
-            Support
-        </a>
-        <a  class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-user mr-3"></i>
-            My Account
-        </a>
-        <a  class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-sign-out-alt mr-3"></i>
-            Sign Out
-        </a>
+        <ui-dashboard-nav-menu-mobile></ui-dashboard-nav-menu-mobile>
         <button class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg  hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
         </button>
@@ -83,123 +48,15 @@
       <div class="nav-container  shadow-lg">
         
                 <div x-show="!collapsed" class="w-full ">
-                  
-
-                    <a href="index.html" class="flex  
-                    opacity-75 hover:opacity-100 pt-4  pl-1 text-black-900
-                     nav-item items-center  ">
-                        <i class="fas fa-tachometer-alt mr-2"></i>
-                        Dashboard
-                    </a>
-                  <a href="blank.html" class="flex 
-                  opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                   nav-item items-center                               
-                  ">
-                        <i class="fas fa-sticky-note m-2"></i>
-                        Blank Page
-                    </a>
-                      <a href="tables.html" class="flex  
-                      opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                       nav-item items-center">
-                        <i class="fas fa-table m-2"></i>
-                        Tables
-                    </a>
-                    <a href="forms.html" class="flex  
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-align-left m-2"></i>
-                        Forms
-                    </a>
-                    <a href="tabs.html" class="flex  
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center">
-                        <i class="fas fa-tablet-alt m-2"></i>
-                        Tabbed Content
-                    </a>
-                    <a href="calendar.html" class="flex  
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-calendar m-2"></i>
-                        Calendar
-                    </a>
-                    <a  class="flex  
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-cogs m-2"></i>
-                        Support
-                    </a>
-                    <a  class="flex 
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-user m-2"></i>
-                        My Account
-                    </a>
-                    <a  class="flex  
-                    opacity-75 hover:opacity-100 pt-4 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-sign-out-alt m-2"></i>
-                        Sign Out
-                    </a>
+                  <ui-dashboard-nav-menu [collapsed]="false"></ui-dashboard-nav-menu>
+                 
                     <!-- <button class="w-full bg-white cta-btn font-semibold  mt-3 rounded-lg  hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                         <i class="fas fa-arrow-circle-up m-2"></i> Upgrade to Pro!
                     </button>     -->
                 </div>
                 <div x-show="collapsed"> 
-                    <a href="index.html" class="flex
-                    opacity-75 hover:opacity-100 pt-4   text-gray-900
-                     nav-item items-center  " tooltip="Dashboard">
-                        <i class="fas fa-tachometer-alt pl-1 "></i>
-                        
-                    </a>
-                  <a href="blank.html" class="flex
-                  opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                   nav-item items-center                               
-                  ">
-                        <i class="fas fa-sticky-note pl-1 "></i>
-                        
-                    </a>
-                      <a href="tables.html" class="flex
-                      opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                       nav-item items-center">
-                        <i class="fas fa-table pl-1 "></i>
-                       
-                    </a>
-                    <a href="forms.html" class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-align-left pl-1 "></i>
-                        
-                    </a>
-                    <a href="tabs.html" class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center">
-                        <i class="fas fa-tablet-alt pl-1 "></i>
-                       
-                    </a>
-                    <a href="calendar.html" class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-calendar pl-1 "></i>
-                       
-                    </a>
-                    <a  class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-cogs pl-1 "></i>
-                       
-                    </a>
-                    <a  class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-user pl-1 "></i>
-                       
-                    </a>
-                    <a  class="flex
-                    opacity-75 hover:opacity-100 pt-6 text-gray-500 hover:text-gray-900
-                     nav-item items-center       ">
-                        <i class="fas fa-sign-out-alt pl-1 "></i>
-                       
-                    </a>    
+                    <ui-dashboard-nav-menu [collapsed]="true"></ui-dashboard-nav-menu>
+                   
                 
                 </div>
       
@@ -208,7 +65,7 @@
                 <a class="text-black-800 "
                 x-show="collapsed"                            
                  x-on:click="show=!show">
-                    <i class="fa-solid pl-1 fa-angles-left fa-xl "></i>
+                    <i class="fa-solid pl-1 fa-angles-left fa-xl cursor-pointer "></i>
                 </a>
         </div>
     
