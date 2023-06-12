@@ -48,11 +48,29 @@ export const usersListReducer = createReducer<UserListState>(initialState,
                 ...state,
                  DataStatus: 'loading'}
     } ),
+    on(UserListPagingActions.orderby, (state, {orderByFieldName}): UserListState => {
+        let orderBy:string='Asc';
+        if (state.Paging.sortByName===orderByFieldName)
+            orderBy = state.Paging.orderBy == 'Asc' ? 'Desc' : 'Asc';
+        const page = 1;    //Go to page 1
+        const currentRange = calcPageRange(state.Paging.VisiablePageRanges, state.Paging.PagesRangeSize, state.Paging.numberOfpages, page);
+        return {...state, DataStatus: 'loading',
+        Paging: {...state.Paging,
+            VisiablePageRanges: currentRange,
+            currentPageNumber: page,
+            PreviousPageRangeAvailable: false,
+            NextPageRangeAvailable: currentRange[currentRange.length-1]!=state.Paging.numberOfpages,
+            orderBy,
+            sortByName: orderByFieldName
+            
+        }
+    }
+    }),
     on(UserListPagingActions.gotopage, (state, {page}) : UserListState => {
         
         if (page<=0 || page>state.Paging.numberOfpages)
             return state;
-        let currentRange =calcPageRange(state.Paging.VisiablePageRanges, state.Paging.PagesRangeSize, state.Paging.numberOfpages, page);
+        const currentRange = calcPageRange(state.Paging.VisiablePageRanges, state.Paging.PagesRangeSize, state.Paging.numberOfpages, page);
         return {...state,
                 DataStatus: 'loading', 
                 Paging: {

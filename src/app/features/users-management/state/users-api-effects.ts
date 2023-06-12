@@ -6,6 +6,7 @@ import { selectPaging, State } from ".";
 import { UsersDataService } from "../services/users-data.service";
 import { UsersApiActions } from "./actions/users-api.actions";
 import { UserListPagingActions, createUser, updateUser, deleteUser } from "./actions/users-list-page.actions";
+import { ApiPageRequest } from "src/app/shared/models/APIs";
 
 @Injectable()
 export class UsersApiEffects {
@@ -37,14 +38,18 @@ export class UsersApiEffects {
                         UserListPagingActions.nextpage,
                         UserListPagingActions.previouspage,
                         UserListPagingActions.nextpagerange,
-                        UserListPagingActions.prevpagerange
+                        UserListPagingActions.prevpagerange,
+                        UserListPagingActions.orderby
 
             ]),
             withLatestFrom(this.store.select(selectPaging)),
             switchMap(([pageAction, pagerVM])   => {
                 return this.userDataService.page({
-                    ...pagerVM,
-                     pageNumber: pagerVM.currentPageNumber  })
+                    pageNumber: pagerVM.currentPageNumber,
+                    pageSize: pagerVM.pageSize,
+                    sortByName: pagerVM.sortByName,
+                    orderBy: pagerVM.orderBy
+                } as ApiPageRequest)
                     .pipe(
                         tap(r => console.log(r)),
                         map(apiRespModel => UsersApiActions.pageddataloaded({  response: apiRespModel }) ),

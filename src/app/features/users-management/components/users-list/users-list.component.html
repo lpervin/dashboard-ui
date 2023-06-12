@@ -44,12 +44,48 @@
     </p>
     
     <div class="bg-white overflow-auto">
+      <!-- {{ (sortViewModel$ | async) | json}} -->
         <table class="w-full flex flex-row flex-no-wrap bg-white">
-            <thead class="bg-gray-800 text-white">
+            <thead class="bg-gray-800 text-white" *ngIf=" (sortViewModel$ | async) as sortViewModel">
                 <tr class="table-row flex-col flex-no wrap  rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                    <th class="w-1/2 text-left py-3 px-4 uppercase font-semibold text-sm ">Name</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm ">Email</th>                    
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm ">Age</th>
+                    <th class="w-1/2 text-left py-3 px-4 uppercase font-semibold text-sm  whitespace-nowrap">
+                      <ng-container *ngIf="sortViewModel.sortByName==='Name'; else nameSortInit">
+                         <a href="#" onclick="javascript:return false;" title="sort" (click)="sortByChanged('Name')" >Name&nbsp;
+                          <i class="fa-solid  transform -translate-y-0.5" [ngClass]="{'fa-caret-up': sortViewModel.orderBy == 'Asc', 'fa-caret-down': sortViewModel.orderBy == 'Desc' }"></i></a> 
+                      </ng-container>
+                    <ng-template #nameSortInit>
+                      <a href="#" onclick="javascript:return false;" (click)="sortByChanged('Name')"  title="sort by Name Asc">
+                        Name
+                      </a> 
+                    </ng-template>
+                    </th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm  whitespace-nowrap">
+                          <ng-container *ngIf="sortViewModel.sortByName==='Email'; else emailSortInit">
+                            <a href="#" onclick="javascript:return false;" title="sort" (click)="sortByChanged('Email')">Email&nbsp;
+                            <i class="fa-solid  transform -translate-y-0.5" [ngClass]="{'fa-caret-up': sortViewModel.orderBy == 'Asc', 'fa-caret-down': sortViewModel.orderBy == 'Desc' }"></i>
+                          </a> 
+                        </ng-container>
+                      <ng-template #emailSortInit>
+                        <a href="#" onclick="javascript:return false;" (click)="sortByChanged('Email')" title="sort by Email Asc">
+                          Email
+                        </a> 
+                      </ng-template>
+                    
+                    </th>                    
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm whitespace-nowrap">
+                   
+                      <ng-container *ngIf="sortViewModel.sortByName==='Age'; else ageSourtInit">
+                        <a href="#" onclick="javascript:return false;" title="sort" (click)="sortByChanged('Age')" >Age&nbsp;
+                        <i class="fa-solid  transform -translate-y-0.5" [ngClass]="{'fa-caret-up': sortViewModel.orderBy == 'Asc', 'fa-caret-down': sortViewModel.orderBy == 'Desc' }"></i>
+                      </a> 
+                    </ng-container>
+                  <ng-template #ageSourtInit>
+                    <a href="#" onclick="javascript:return false;" title="sort by Age Asc" (click)="sortByChanged('Age')" >
+                      Age
+                    </a> 
+                  </ng-template>
+                      
+                    </th>
                     <th class="w-1/3 py-3 px-4 uppercase font-semibold text-sm ">&nbsp;</th>
                 </tr>
             </thead>

@@ -1,11 +1,13 @@
 import {  emptyProps, createActionGroup, props, createAction } from "@ngrx/store";
 import { UserModel, UserRequiredProps } from "../../models/UsersModel";
+import { SortViewModel } from "src/app/shared/models/APIs";
 
 
 export const UserListPagingActions = createActionGroup({
         source: 'UserList Paging',
         events: {
             'Init': emptyProps(),
+            'OrderBy': props<{orderByFieldName: string}>(),
             'GotoPage': props<{page: number}>(),
             'NextPage': emptyProps(),
             'PreviousPage': emptyProps(),
