@@ -151,7 +151,7 @@ export const usersListReducer = createReducer<UserListState>(initialState,
         }
     }),
     on(UsersApiActions.datainit, (state, {response}): UserListState => {
-        let currentRange = state.Paging && state.Paging.VisiablePageRanges.length>0 ?         
+        const currentRange = state.Paging && state.Paging.VisiablePageRanges.length>0 ?         
                  state.Paging.VisiablePageRanges 
                         :        
                  Array.from(Array(Math.min(response.pageCount, state.Paging.PagesRangeSize)).keys()).map(i => ++i);
@@ -204,8 +204,7 @@ export const usersListReducer = createReducer<UserListState>(initialState,
         return {...state, selectedUserId: userId}
     }),
     on(UsersApiActions.apifailure, (state, {error}): UserListState => {
-        console.log(error);
-        return {...state,
+       return {...state,
             DataStatus: 'error',
             ErrorMessage: error.message
         };
@@ -231,10 +230,10 @@ const calcPageRange = (currentRange: number[], pagesRangeSize:number, numberOfpa
     if (currentPage>=lowerBound && currentPage<=upperBound)
         return currentRange;
      
-     let rangeNum = Math.ceil(currentPage/pagesRangeSize);
+     const rangeNum = Math.ceil(currentPage/pagesRangeSize);
      upperBound = Math.min(rangeNum * pagesRangeSize, numberOfpages);
      lowerBound = upperBound - (pagesRangeSize-1);
-     let range = [];
+     const range = [];
      for (let i = lowerBound;i<=upperBound;i++)
          range.push(i);
      
@@ -244,9 +243,9 @@ const calcPageRange = (currentRange: number[], pagesRangeSize:number, numberOfpa
 
  const CalcNextPageRange = (currentRange: number[], numberOfpages: number, pagesRangeSize:number): number[]  => {
    
-        let nextRangeStart = currentRange[currentRange.length-1]+1;
-        let nextRangeEnd = Math.min(numberOfpages, nextRangeStart+pagesRangeSize-1);
-        let range = [];
+        const nextRangeStart = currentRange[currentRange.length-1]+1;
+        const nextRangeEnd = Math.min(numberOfpages, nextRangeStart+pagesRangeSize-1);
+        const range = [];
         for (let i = nextRangeStart;i<=nextRangeEnd;i++)
             range.push(i);
 
@@ -256,9 +255,9 @@ const calcPageRange = (currentRange: number[], pagesRangeSize:number, numberOfpa
 
 const CalcPrevPageRange = (currentRange: number[], pagesRangeSize: number): number[]  => {
    
-    let prevRangeStart = Math.max(1, (currentRange[0])-pagesRangeSize);
-    let prevRangeEnd = (prevRangeStart+pagesRangeSize)-1;
-    let range = [];
+    const prevRangeStart = Math.max(1, (currentRange[0])-pagesRangeSize);
+    const prevRangeEnd = (prevRangeStart+pagesRangeSize)-1;
+    const range = [];
     for (let i = prevRangeStart;i<=prevRangeEnd;i++)
         range.push(i);
     return range;
