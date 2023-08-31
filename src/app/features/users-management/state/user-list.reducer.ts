@@ -154,25 +154,25 @@ export const usersListReducer = createReducer<UserListState>(initialState,
         const currentRange = state.Paging && state.Paging.VisiablePageRanges.length>0 ?         
                  state.Paging.VisiablePageRanges 
                         :        
-                 Array.from(Array(Math.min(response.pageCount, state.Paging.PagesRangeSize)).keys()).map(i => ++i);
+                 Array.from(Array(Math.min(response.pagesCount, state.Paging.PagesRangeSize)).keys()).map(i => ++i);
         
-                return  adapter.setAll(response.pageData, {...state,
+                return  adapter.setAll(response.results, {...state,
                                                             DataStatus: 'success',
                                                             ErrorMessage: null,
                                                             Paging: {
                                                                     ...state.Paging,                        
-                                                                    currentPageNumber: response.pageNumber,
+                                                                    currentPageNumber: response.currentPageNumber,
                                                                     pageSize: response.pageSize,
-                                                                    numberOfpages: response.pageCount,
-                                                                    AvailabelPages: Array.from(Array(response.pageCount).keys()).map(i=>i+1),
+                                                                    numberOfpages: response.pagesCount,
+                                                                    AvailabelPages: Array.from(Array(response.pagesCount).keys()).map(i=>i+1),
                                                                     VisiablePageRanges: currentRange,
                                                                     PreviousPageRangeAvailable: currentRange[0]!=1,
-                                                                    NextPageRangeAvailable: currentRange[currentRange.length-1]!=response.pageCount
+                                                                    NextPageRangeAvailable: currentRange[currentRange.length-1]!=response.pagesCount
                                                             }
         });
     }),
-    on(UsersApiActions.pageddataloaded, (state, {response}): UserListState => {
-        return adapter.setAll(response.pageData, {...state,
+    on(UsersApiActions.pageddataloaded, (state, { response} ): UserListState => {
+        return adapter.setAll(response.results, {...state,
                                                      DataStatus: 'success',   });
         
     }),  
@@ -191,7 +191,7 @@ export const usersListReducer = createReducer<UserListState>(initialState,
         return adapter.removeOne(action.user.id, state);
     }),
     on(UsersApiActions.usercreated, (state, {pageResponeWtUser})=> {
-        return adapter.setAll(pageResponeWtUser.pageData, 
+        return adapter.setAll(pageResponeWtUser.results, 
             {...state,
             Paging: {...state.Paging, currentPage: 1},
             DataStatus: 'success',   });

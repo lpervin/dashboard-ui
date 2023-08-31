@@ -21,8 +21,11 @@ export class UsersApiEffects {
         withLatestFrom(this.store.select(selectPaging)),
         exhaustMap(([initAction, pagerVM]) =>        
                 this.userDataService.page({
-                    ...pagerVM,
-                     pageNumber: pagerVM.currentPageNumber  })
+                            pageNumber: pagerVM.currentPageNumber,
+                            pageSize: pagerVM.pageSize,
+                            sortBy: pagerVM.sortByName,
+                            sortDir: pagerVM.orderBy
+                      })
                     .pipe(
                 //   tap(r => console.log(r)),
                     map(apiRespModel => UsersApiActions.datainit({  response: apiRespModel }) ),
@@ -47,8 +50,8 @@ export class UsersApiEffects {
                 return this.userDataService.page({
                     pageNumber: pagerVM.currentPageNumber,
                     pageSize: pagerVM.pageSize,
-                    sortByName: pagerVM.sortByName,
-                    orderBy: pagerVM.orderBy
+                    sortBy: pagerVM.sortByName,
+                    sortDir: pagerVM.orderBy
                 } as ApiPageRequest)
                     .pipe(
                         tap(r => console.log(r)),

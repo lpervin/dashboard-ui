@@ -1,10 +1,10 @@
 export interface PagedApiResponseModel {
     totalRecordsCount: number;
-    pageRecordsCount: number;
-    pageCount: number;
     pageSize: number;
-    pageNumber: number;
-    orderBy: SortInfoModel;
+    pageRecordsCount: number;  
+    pagesCount: number;
+    currentPageNumber: number;
+    //orderBy: SortInfoModel;
 }
 
 export interface SortInfoModel {

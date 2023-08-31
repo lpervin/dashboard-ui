@@ -2,7 +2,7 @@ import { PagedApiResponseModel } from "src/app/shared/models/APIs";
 
 
 export interface UsersApiResponseModel extends PagedApiResponseModel {
-    pageData: UserModel[];
+    results: UserModel[];
 }
 
 export interface UserModel  {
